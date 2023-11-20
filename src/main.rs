@@ -1,17 +1,15 @@
-use crate::link_list::LinkList;
+use crate::hash_map::HashMap;
 
-mod link_list;
+mod hash_map;
 
 fn main() {
-    let mut a = LinkList::new();
-    a.push_front(1);
-    a.push_front(2);
-    a.push_front(3);
-    assert_eq!(format!("{:?}", a), "3 -> 2 -> 1");
+    let mut map: HashMap<String, i32> = HashMap::new();
+    map.insert("1".to_string(), 1);
+    map.insert("2".to_string(), 2);
 
-    for x in &mut a {
-        *x += 1;
+    for x in &map {
+        println!("{:?}", x);
     }
 
-    assert_eq!(format!("{:?}", a), "4 -> 3 -> 2");
+    println!("{:?}", map);
 }
