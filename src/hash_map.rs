@@ -16,6 +16,7 @@ where
     (hasher.finish() as usize) % capacity
 }
 
+#[derive(Clone)]
 pub struct HashMap<K, V>
 where
     K: Hash + Eq,
@@ -45,6 +46,10 @@ where
 
     pub fn len(&self) -> usize {
         self.buckets.iter().map(|x| x.len()).sum()
+    }
+
+    pub fn is_empty(&self) -> bool {
+        self.len() == 0
     }
 
     pub fn get<Q>(&self, q: &Q) -> Option<&V>
@@ -109,6 +114,7 @@ where
         Self::with_capacity(4)
     }
 }
+
 pub struct IntoIter<K: Hash + Eq, V>(HashMap<K, V>);
 
 impl<K, V> Iterator for IntoIter<K, V>

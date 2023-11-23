@@ -1,15 +1,12 @@
-use crate::hash_map::HashMap;
+use crate::hash_set::HashSet;
 
 mod hash_map;
+mod hash_set;
 
 fn main() {
-    let mut map: HashMap<String, i32> = HashMap::new();
-    map.insert("1".to_string(), 1);
-    map.insert("2".to_string(), 2);
-
-    for x in &map {
-        println!("{:?}", x);
-    }
-
-    println!("{:?}", map);
+    let mut set = HashSet::new();
+    set.insert(1);
+    set.insert(2);
+    set.insert(3);
+    println!("{:?}", set);
 }
